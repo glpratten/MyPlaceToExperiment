@@ -10,7 +10,7 @@ int main()
   printf("Enter the path and filename: ");
   scanf("%s", filename); // get file path & name from the user
   printf(filename);
-  experiment = fopen(&filename, "rw"); // initialize file as read/write
+  experiment = fopen(filename, "w"); // initialize file as read/write
 
   if (experiment != NULL) 
   {
