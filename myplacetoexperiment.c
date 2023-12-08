@@ -1,7 +1,8 @@
 #include <stdio.h>
 
-#define TESTMODEOFF 0 // run program as normal
-#define TESTMODEON  1 // run program as a test
+#define TESTMODEOFF 'n' // run program as normal
+#define TESTMODEON  'y' // run program as a test
+#define COUPONCOUNTERFILENAME "test.txt"
 
 int i;
 FILE *experiment;   // create a FILE pointer variable
@@ -14,13 +15,11 @@ int main()
   printf("Do you wish to run this program in test mode? (y/n)\n");  // provide option to run in test mode. No coupon will be produced
   scanf("%c", &testmoderesponse);
 
-  if (testmoderesponse == 'y' || testmoderesponse == 'Y')
+  if (testmoderesponse == TESTMODEON || testmoderesponse == TESTMODEON - 'a' + 'A') // recognize both upper and lower case 'y'
   {
-    printf("You chose to run the program.\n");
-    printf("Enter the path and filename: ");
-    scanf("%s", filename); // get file path & name from the user
-    printf(filename);
-    experiment = fopen(filename, "w"); // initialize file as read/write
+    printf("You chose to run the program. The file name is %s.\n", COUPONCOUNTERFILENAME);
+    
+    experiment = fopen(COUPONCOUNTERFILENAME, "w"); // initialize file as write
 
     if (experiment != NULL) 
     {
@@ -32,7 +31,7 @@ int main()
       printf("Failed to create the file.\n");
     }
   }
-  else if (testmoderesponse == 'n' || testmoderesponse == 'N')
+  else if (testmoderesponse == TESTMODEOFF || testmoderesponse == TESTMODEOFF - 'a' + 'A')  // recognize both upper and lower case 'n'
   {
     printf("You chose not to run the program.\n");
   }
@@ -44,3 +43,5 @@ int main()
   
   return 0;
 }
+
+
