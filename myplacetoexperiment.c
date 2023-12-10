@@ -2,25 +2,22 @@
 
 #define TESTMODEOFF 'n' // run program as normal
 #define TESTMODEON  'y' // run program as a test
-#define COUPONCOUNTERFILENAME "couponcounterfile.txt" // file to track number of coupons that have been requested
+#define COUPONCOUNTERFILENAME "file.txt" // file to track number of coupons that have been requested
 
 int i;
 int filecounter = 0;
 FILE *experiment;   // create a FILE pointer variable
-// char filename[255]; // create variable to store desired path/filename
 char testmoderesponse;
 
 int main() 
 {
-  printf("I will know this has compiled when I see the file named %s.\n", COUPONCOUNTERFILENAME);
-    
   printf("Do you wish to run this program in test mode? (y/n)\n");  // provide option to run in test mode. No coupon will be produced
   scanf("%c", &testmoderesponse);
 
   if (testmoderesponse == TESTMODEON || testmoderesponse == TESTMODEON - 'a' + 'A') // recognize both upper and lower case 'y'
   {
     printf("You chose to run the program in test mode.\n");
-    
+    return 0;
   }
   else if (testmoderesponse == TESTMODEOFF || testmoderesponse == TESTMODEOFF - 'a' + 'A')  // recognize both upper and lower case 'n'
   {
@@ -35,7 +32,7 @@ int main()
   {
     printf("The file does not exist. Creating file named %s.\n", COUPONCOUNTERFILENAME);
     experiment = fopen(COUPONCOUNTERFILENAME, "w");
-    if (experiemnt == NULL) 
+    if (experiment == NULL) 
     {
         printf("Error creating file");
         return 1;
@@ -48,7 +45,7 @@ int main()
     experiment = fopen(COUPONCOUNTERFILENAME, "r+");
   }
 
-  elseif (experiment != NULL) 
+  else if (experiment != NULL) 
   {
     printf("The file exists. Opening file named %s.\n", COUPONCOUNTERFILENAME);
 
