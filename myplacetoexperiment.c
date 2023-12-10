@@ -2,7 +2,7 @@
 
 #define TESTMODEOFF 'n' // run program as normal
 #define TESTMODEON  'y' // run program as a test
-#define COUPONCOUNTERFILENAME "file.txt" // file to track number of coupons that have been requested
+#define FILENAME "file.txt" // file to track number of times program has been run
 
 int i;
 int filecounter = 0;
@@ -27,11 +27,11 @@ int main()
   {
     printf("Invalid response. Please enter 'y' or 'n'.\n");
   }
-  experiment = fopen(COUPONCOUNTERFILENAME, "r+"); // initialize file as write
+  experiment = fopen(FILENAME, "r+"); // initialize file as write
   if (experiment == NULL)   // The file does not exist; create it and store the value 0
   {
-    printf("The file does not exist. Creating file named %s.\n", COUPONCOUNTERFILENAME);
-    experiment = fopen(COUPONCOUNTERFILENAME, "w");
+    printf("The file does not exist. Creating file named %s.\n", FILENAME);
+    experiment = fopen(FILENAME, "w");
     if (experiment == NULL) 
     {
         printf("Error creating file");
@@ -42,12 +42,12 @@ int main()
 
     // Close the file and reopen it in read mode
     fclose(experiment);
-    experiment = fopen(COUPONCOUNTERFILENAME, "r+");
+    experiment = fopen(FILENAME, "r+");
   }
 
   else if (experiment != NULL) 
   {
-    printf("The file exists. Opening file named %s.\n", COUPONCOUNTERFILENAME);
+    printf("The file exists. Opening file named %s.\n", FILENAME);
 
     fscanf(experiment, "%d", &filecounter);   // Read an integer from the file
     printf("Read integer from the file: %d\n", filecounter);
@@ -62,7 +62,7 @@ int main()
   }
   else 
   {
-    printf("Something went wrong with the file named %s.\n", COUPONCOUNTERFILENAME);
+    printf("Something went wrong with the file named %s.\n", FILENAME);
     printf("Error opening the file.\n");
   }
   i++;
