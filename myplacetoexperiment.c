@@ -1,5 +1,6 @@
 #include <stdio.h>
 
+#define LIMIT 3         // program can only run 3 times
 #define TESTMODEOFF 'n' // run program as normal
 #define TESTMODEON  'y' // run program as a test
 #define FILENAME "file.txt" // file to track number of times program has been run
@@ -65,7 +66,11 @@ int main()
     printf("Something went wrong with the file named %s.\n", FILENAME);
     printf("Error opening the file.\n");
   }
-  i++;
+  while (i < LIMIT)
+  {
+    printf("limit %d and i %d", LIMIT, i+1);
+    i++;
+  }
   
   return 0;
 }
