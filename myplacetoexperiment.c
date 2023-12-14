@@ -10,6 +10,8 @@ int file_counter = 0;     // used to track the number of times this program has 
 FILE *experiment;         // create a FILE pointer variable
 char test_mode_response;  // create a variable to accept user response
 
+int foo = 0;              // stupid way of tracking if a valid response has been received to test mode question
+
 int main() 
 {
   do
@@ -19,12 +21,21 @@ int main()
     test_mode_response = tolower(test_mode_response);                 // convert response to lower case
  
     if (test_mode_response == TEST_MODE_ON)
+    {
+      foo = 1;
       printf("You chose to run the program in test mode. You will be able to run the program but no actual update will be made.\n");
+    }
     else if (test_mode_response == TEST_MODE_OFF)
+    {
+      foo = 1;
       printf("Program will run for real!\n");
+    }
     else
+    {
+      foo = 0;
       printf("%c is an invalid response. Please enter 'y' or 'n'.\n", test_mode_response);
-  } while ((test_mode_response != TEST_MODE_OFF) && (test_mode_response != TEST_MODE_ON));
+    }
+  } while (foo==0);
 
  experiment = fopen(FILENAME, "r+"); // initialize file as write
   if (experiment == NULL)   // The file does not exist; create it and store the value 0
