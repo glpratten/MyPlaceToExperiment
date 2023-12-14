@@ -17,17 +17,17 @@ int main()
   test_mode_response = tolower(test_mode_response);                 // convert response to lower case
 
   // Determine how the user responded
-  //do
-  //{  
+  do
+  {  
     if (test_mode_response == TEST_MODE_ON)
       printf("You chose to run the program in test mode. You will be able to run the program but no actual update will be made.\n");
     else if (test_mode_response == TEST_MODE_OFF)
       printf("Program will run for real!\n");
-    else {
+    else
       printf("%c is an invalid response. Please enter 'y' or 'n'.\n", test_mode_response);
-      return 1; }
-  //} while (test_mode_response != TEST_MODE_OFF && test_mode_response != TEST_MODE_ON);
-  experiment = fopen(FILENAME, "r+"); // initialize file as write
+  } while (test_mode_response != TEST_MODE_OFF && test_mode_response != TEST_MODE_ON);
+
+ experiment = fopen(FILENAME, "r+"); // initialize file as write
   if (experiment == NULL)   // The file does not exist; create it and store the value 0
   {
     printf("The file does not exist. Creating file named %s.\n", FILENAME);
