@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <ctype.h>
 
 #define LIMIT 3             // program can only run 3 times
 #define TEST_MODE_OFF 'n'   // run program as normal
@@ -12,22 +13,20 @@ char test_mode_response;  // create a variable to accept user response
 int main() 
 {
   printf("Do you wish to run this program in test mode? (y/n)\n");  // provide option to run in test mode
-  scanf("%c", &test_mode_response);
+  scanf(" %c", &test_mode_response);                                // accept user response; space before %c handles spaces before response and removes the \n
+  test_mode_response = tolower(test_mode_response);                 // convert response to lower case
 
   // Determine how the user responded
-  if (test_mode_response == TEST_MODE_ON || test_mode_response == TEST_MODE_ON - 'a' + 'A') // recognize both upper and lower case 'y'
-  {
-    printf("You chose to run the program in test mode. You will be able to run the program but no actual update will be made.\n");
-  }
-  else if (test_mode_response == TEST_MODE_OFF || test_mode_response == TEST_MODE_OFF - 'a' + 'A')  // recognize both upper and lower case 'n'
-  {
-    printf("You chose not to run the program in test mode. Updates will be made.\n");
-  }
-  else
-  {
-    printf("Invalid response. Program will terminate. Please execute again and enter 'y' or 'n'.\n");
-    return 1;
-  }
+  //do
+  //{  
+    if (test_mode_response == TEST_MODE_ON)
+      printf("You chose to run the program in test mode. You will be able to run the program but no actual update will be made.\n");
+    else if (test_mode_response == TEST_MODE_OFF)
+      printf("Program will run for real!\n");
+    else {
+      printf("%c is an invalid response. Please enter 'y' or 'n'.\n", test_mode_response);
+      return 1; }
+  //} while (test_mode_response != TEST_MODE_OFF && test_mode_response != TEST_MODE_ON);
   experiment = fopen(FILENAME, "r+"); // initialize file as write
   if (experiment == NULL)   // The file does not exist; create it and store the value 0
   {
