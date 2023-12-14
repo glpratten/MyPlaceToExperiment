@@ -82,10 +82,7 @@ int main()
     printf("Error opening the file.\n");
     return 1;
   }
-  for (int i=0; i < LIMIT; i++)
-  {
-    printf("This program is running %d of %d times allowed.\n", i+1, LIMIT);
-  }
+  printf("Hello World\n");
   
   return 0;
 }
