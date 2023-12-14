@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/Gianna/Documents/GitHub Repositories/Learning Git-Github",
-      "program": "c:/Users/Gianna/Documents/GitHub Repositories/Learning Git-Github/build/Debug/outDebug",
+      "cwd": "c:/Users/Gianna/Documents/GitHubRepositories/MyPlaceToExperiment",
+      "program": "c:/Users/Gianna/Documents/GitHubRepositories/MyPlaceToExperiment/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
